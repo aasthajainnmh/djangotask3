@@ -1,0 +1,38 @@
+{% load static%}
+<html>
+  <head>
+    <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+    </head>
+  </head>
+  <body style="
+  background-image: url('{% static 'images/hospital.jpg' %}');
+  background-size: cover;
+  height: 710px;
+">
+    <center><h2>My Calendar Events</h2></center>
+    <div class="container">
+      <table class="table mx-auto">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Appointment Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>Doctor appointment</td>
+            <td>Appointment with doctor</td>
+            <td> 31/03/2023</td>
+            <td>9 : 00 AM</td>
+            <td>9 : 45 AM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'customer.html' %}
+
+{% block content %}
+<h1>Blog Posts in "{{ category }}" Category</h1>
+<ul>
+{% for post in posts %}
+    <li>{{ post.title }} - {{ post.image }} - {{ post.summary }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

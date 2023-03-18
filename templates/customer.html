@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Patient dashboard</title>
+  </head>
+  <body
+    style="
+      background-image: url('{% static 'images/hospital.jpg' %}');
+      background-size: cover;
+    "
+  >
+    <center><h1>Patients dashboard</h1></center>
+    <h1>Welcome {{user.username}}</h1>
+    <h2>Your registered email is :{{ user.email }}</h2>
+
+    <form method="get">
+      <label for="category">Filter by Category:</label>
+      <select name="category" id="category">
+          <option value="">All Categories</option>
+          <option value="Mental Health">Mental Health</option>
+          <option value="Heart Diseases">Heart Diseases</option>
+          <option value="Covid19">Covid19</option>
+          <option value="Immunization">Immunization</option>
+      </select>
+      <!-- <button type="submit">Filter</button> -->
+  </form>
+  <br/>
+  <br/>
+    {% block allposts%}
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Title</th>
+          <th scope="col">Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+        <tr>
+          <th scope="row">{{post.category}}</th>
+          <td>{{ post.title }}</td>
+          <td>{{ post.summary }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><br>
+    <button><a href="{% url 'doctor_details1' %}">See the list of doctors</a></button>
+  </body>
+
+  
+  <script>
+    const categorySelect = document.getElementById('category');
+    categorySelect.addEventListener('change', (event) => {
+      const selectedCategory = event.target.value;
+      const url = window.location.pathname + '?category=' + encodeURIComponent(selectedCategory);
+      window.location.href = url;
+    });
+  </script>
+{% endblock %}
+</html>
